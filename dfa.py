@@ -7,10 +7,11 @@
 """
 
 
-transitions ={ '0': { 'DIGIT':'s1', 'DOT':'s2' },
-'s1': { 'DIGIT':'s1','DOT':'s3' },
-'s2': { 'DIGIT':'s3' },
-'s3': { 'DIGIT':'s3' }
+transitions = { 's0': { 'DIGIT':'s1', 'DOT':'s2' },
+            's1': { 'DIGIT':'s1','DOT':'s3' },
+            's2': { 'DIGIT':'s3' },
+            's3': { 'DIGIT':'s3' }  
+
 	# (Α) Συμπληρώστε τον πίνακα μεταβάσεων ως λεξικό (dictionary).
 	# Η αρχική κατάσταση πρέπει να ονομάζεται 's0'.
 	# Για λεπτομέρειες δείτε στο:
@@ -37,8 +38,9 @@ def get_char(text,pos):
 	
 	c = text[pos]
 	
-	if c>='0' and c<='9': return 'DIGIT'
-	if c=='.': return 'DOT'
+	
+	if c>='0' and c<='9': return 'DIGIT' 
+    	if c=='.': return 'DOT'
 	# (Γ) Προαιρετικά, μπορείτε να ομαδοποιήσετε τους
 	# χαρακτήρες εισόδου εδώ.
 	# Για λεπτομέρειες δείτε στο:
@@ -82,5 +84,4 @@ def scan(text,transitions,accepts,state):
 for test in ['12.456','6789.','.66998','1234','.']:
 	m = scan(test,transitions,accepts,'s0')
 	print("Testing '{}'\nResult: {}\n".format(test,m))
-
 
